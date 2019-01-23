@@ -6,9 +6,9 @@ import (
 
 type Venue struct {
 	gorm.Model
-	Name         string
-	Price        int
-	Availability bool
+	Name         string `json:"name"`
+	Price        int    `json:"price"`
+	Availability bool   `json:"avaibility"`
 }
 
 func (b *Venue) TableName() string {

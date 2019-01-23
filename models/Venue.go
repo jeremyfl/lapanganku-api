@@ -2,8 +2,10 @@ package models
 
 import "lapanganku/config"
 
+var db = config.Database()
+
 func GetAllVenue(v *[]Venue) (err error) {
-	if err = config.DB.Find(v).Error; err != nil {
+	if err = db.Find(v).Error; err != nil {
 		return err
 	}
 
@@ -11,8 +13,9 @@ func GetAllVenue(v *[]Venue) (err error) {
 }
 
 func StoreVenue(v *Venue) (err error) {
-	if err = config.DB.Create(v).Error; err != nil {
+	if err = db.Create(v).Error; err != nil {
 		return err
 	}
+
 	return nil
 }
