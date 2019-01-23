@@ -11,6 +11,7 @@ import (
 var err error
 
 func main() {
+
 	config.Database().Close()
 	config.Database().AutoMigrate(&models.Venue{})
 

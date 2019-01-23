@@ -2,15 +2,25 @@ package config
 
 import (
 	"fmt"
+	"log"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"github.com/joho/godotenv"
 )
 
 var err error
 
 func Database() *gorm.DB {
-	db, err := gorm.Open("mysql", "root:dev@/lapanganku?charset=utf8&parseTime=True&loc=Local")
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	db, err := gorm.Open("mysql", ""+os.Getenv("DB_USER")+":"+os.Getenv("DB_PASS")+"@/"+os.Getenv("DB_NAME")+"?charset=utf8&parseTime=True&loc=Local")
+	// db, err := gorm.Open("mysql", "root:dev@/lapanganku?charset=utf8&parseTime=True&loc=Local")
 
 	if err != nil {
 		fmt.Println("Can't connect to database", err)
@@ -18,5 +28,3 @@ func Database() *gorm.DB {
 
 	return db
 }
-
-// var DB *gorm.DB
