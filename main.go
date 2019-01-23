@@ -4,8 +4,6 @@ import (
 	"lapanganku/Routers"
 	"lapanganku/config"
 	"lapanganku/models"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 var err error
