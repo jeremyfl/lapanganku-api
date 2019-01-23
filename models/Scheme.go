@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// Venue basic model current structur of venue
 type Venue struct {
 	gorm.Model
 	Name         string `json:"name"`
@@ -11,6 +12,7 @@ type Venue struct {
 	Availability bool   `json:"avaibility"`
 }
 
+// TableName for venue
 func (b *Venue) TableName() string {
 	return "venue"
 }

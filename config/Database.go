@@ -5,13 +5,13 @@ import (
 	"log"
 	"os"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
 )
 
 var err error
 
+// Database connect
 func Database() *gorm.DB {
 	err := godotenv.Load()
 
