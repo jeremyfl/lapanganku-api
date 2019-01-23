@@ -20,7 +20,6 @@ func Database() *gorm.DB {
 	}
 
 	db, err := gorm.Open("mysql", ""+os.Getenv("DB_USER")+":"+os.Getenv("DB_PASS")+"@/"+os.Getenv("DB_NAME")+"?charset=utf8&parseTime=True&loc=Local")
-	// db, err := gorm.Open("mysql", "root:dev@/lapanganku?charset=utf8&parseTime=True&loc=Local")
 
 	if err != nil {
 		fmt.Println("Can't connect to database", err)
