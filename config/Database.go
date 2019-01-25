@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -23,7 +22,7 @@ func Database() *gorm.DB {
 	db, err := gorm.Open("mysql", ""+os.Getenv("DB_USER")+":"+os.Getenv("DB_PASS")+"@/"+os.Getenv("DB_NAME")+"?charset=utf8&parseTime=True&loc=Local")
 
 	if err != nil {
-		fmt.Println("Can't connect to database", err)
+		panic("Failed to connect to database")
 	}
 
 	return db
