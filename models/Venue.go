@@ -6,16 +6,12 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// Venue model
 type Venue struct {
 	gorm.Model
 	Name         string `json:"name"`
 	Price        int    `json:"price"`
 	Availability bool   `json:"avaibility"`
-}
-
-// TableName for venue
-func (b *Venue) TableName() string {
-	return "venue"
 }
 
 var db = config.Database()

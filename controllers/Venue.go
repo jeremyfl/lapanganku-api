@@ -27,6 +27,7 @@ func AllVenue(c *gin.Context) {
 // ShowVenue controller
 func ShowVenue(c *gin.Context) {
 	var venue models.Venue
+
 	foundVenue := models.ShowVenue(&venue, c.Param("id"))
 
 	if foundVenue != nil {
