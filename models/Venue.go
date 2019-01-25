@@ -1,10 +1,26 @@
 package models
 
-import "lapanganku/config"
+import (
+	"lapanganku/config"
+
+	"github.com/jinzhu/gorm"
+)
+
+type Venue struct {
+	gorm.Model
+	Name         string `json:"name"`
+	Price        int    `json:"price"`
+	Availability bool   `json:"avaibility"`
+}
+
+// TableName for venue
+func (b *Venue) TableName() string {
+	return "venue"
+}
 
 var db = config.Database()
 
-// GetAllVenue handler for show all Venue
+// GetAllVenue model
 func GetAllVenue(v *[]Venue) (err error) {
 	if err = db.Find(v).Error; err != nil {
 		return err
@@ -13,7 +29,7 @@ func GetAllVenue(v *[]Venue) (err error) {
 	return nil
 }
 
-// ShowVenue return venue based by id
+// ShowVenue model
 func ShowVenue(v *Venue, id string) (err error) {
 	if err := db.First(v, id).Error; err != nil {
 		return err
@@ -22,7 +38,7 @@ func ShowVenue(v *Venue, id string) (err error) {
 	return nil
 }
 
-// StoreVenue give all
+// StoreVenue model
 func StoreVenue(v *Venue) (err error) {
 	if err = db.Create(v).Error; err != nil {
 		return err
@@ -31,7 +47,7 @@ func StoreVenue(v *Venue) (err error) {
 	return nil
 }
 
-// UpdateVenue to update all venue based by id
+// UpdateVenue model
 func UpdateVenue(v *Venue) (err error) {
 	if err = db.Update(v, 1).Error; err != nil {
 		return err

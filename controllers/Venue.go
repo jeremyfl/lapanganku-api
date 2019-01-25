@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// AllVenue list of venue available
+// AllVenue controller
 func AllVenue(c *gin.Context) {
 	var venue []models.Venue
 
@@ -31,7 +31,7 @@ func ShowVenue(c *gin.Context) {
 
 	if foundVenue != nil {
 		c.JSON(404, gin.H{
-			"message": "Book wasn't found",
+			"message": "Venue wasn't found",
 		})
 	} else {
 		c.JSON(200, gin.H{
@@ -59,25 +59,10 @@ func AddVenue(c *gin.Context) {
 	}
 }
 
-// func UpdateVenue(c *gin.Context) {
-// 	var venue models.Venue
-
-// 	// c.JSON(500, gin.H{
-// 	// 	"venue":   &venue,
-// 	// 	"message": "Sorry something went wrong",
-// 	// })
-
-// 	// c.BindJSON(&venue)
-
-// 	// err := models.UpdateVenue(&venue)
-
-// 	// if err != nil {
-// 	// 	c.JSON(200, gin.H{
-// 	// 		"data": venue,
-// 	// 	})
-// 	// } else {
-// 	// 	c.JSON(500, gin.H{
-// 	// 		"message": "Sorry something went wrong",
-// 	// 	})
-// 	// }
-// }
+// UpdateVenue controller
+func UpdateVenue(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"id":      c.Param("id"),
+		"message": "Update here",
+	})
+}
