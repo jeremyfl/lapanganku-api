@@ -51,7 +51,8 @@ func AddVenue(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(200, gin.H{
-			"message": "Sorry something wrong",
+			"message": "Sorry something wrong with the database",
+			"error":   err,
 		})
 	} else {
 		c.JSON(200, gin.H{
