@@ -73,25 +73,21 @@ func UpdateVenue(c *gin.Context) {
 		c.JSON(404, gin.H{
 			"message": "Venue not found",
 		})
+	} else {
+		c.BindJSON(&venue)
+
+		err = models.UpdateVenue(&venue, c.Params.ByName("id"))
+
+		if err != nil {
+			c.JSON(404, gin.H{
+				"message": "Venue can't updated",
+			})
+		} else {
+			c.JSON(200, gin.H{
+				"data": venue,
+			})
+		}
+
 	}
 
-	// c.BindJSON(&venue)
-
-	test := c.BindJSON(&venue)
-
-	c.JSON(200, gin.H{
-		"data": test,
-	})
-
-	// err = models.UpdateVenue(&venue, c.Params.ByName("id"))
-
-	// if err != nil {
-	// 	c.JSON(400, gin.H{
-	// 		"message": "Something went wrong",
-	// 	})
-	// } else {
-	// 	c.JSON(200, gin.H{
-	// 		"data":    &venue,
-	// 		"message": "Update here",
-	// 	})
 }
