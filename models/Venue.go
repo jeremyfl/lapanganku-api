@@ -10,7 +10,7 @@ import (
 type Venue struct {
 	gorm.Model
 	Name         string `json:"name"`
-	Price        int    `json:"price"`
+	Price        string `json:"price"`
 	Availability bool   `json:"avaibility"`
 }
 
@@ -27,7 +27,7 @@ func GetAllVenue(v *[]Venue) (err error) {
 
 // ShowVenue model
 func ShowVenue(v *Venue, id string) (err error) {
-	if err := db.First(v, id).Error; err != nil {
+	if err := db.Where("id = ?", id).First(v).Error; err != nil {
 		return err
 	}
 
@@ -44,8 +44,8 @@ func StoreVenue(v *Venue) (err error) {
 }
 
 // UpdateVenue model
-func UpdateVenue(v *Venue) (err error) {
-	if err = db.Update(v, 1).Error; err != nil {
+func UpdateVenue(v *Venue, id string) (err error) {
+	if err = db.Save(v).Error; err != nil {
 		return err
 	}
 

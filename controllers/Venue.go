@@ -62,8 +62,35 @@ func AddVenue(c *gin.Context) {
 
 // UpdateVenue controller
 func UpdateVenue(c *gin.Context) {
+
+	var venue models.Venue
+
+	err := models.ShowVenue(&venue, c.Params.ByName("id"))
+
+	// Handle not found error
+	if err != nil {
+		c.JSON(404, gin.H{
+			"message": "Venue not found",
+		})
+	}
+
+	// c.BindJSON(&venue)
+
+	test := c.BindJSON(&venue)
+
 	c.JSON(200, gin.H{
-		"id":      c.Param("id"),
-		"message": "Update here",
+		"data": test,
 	})
+
+	// err = models.UpdateVenue(&venue, c.Params.ByName("id"))
+
+	// if err != nil {
+	// 	c.JSON(400, gin.H{
+	// 		"message": "Something went wrong",
+	// 	})
+	// } else {
+	// 	c.JSON(200, gin.H{
+	// 		"data":    &venue,
+	// 		"message": "Update here",
+	// 	})
 }
