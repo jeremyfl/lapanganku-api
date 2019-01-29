@@ -1,9 +1,9 @@
 package main
 
 import (
-	"lapanganku/Routers"
 	"lapanganku/config"
 	"lapanganku/models"
+	"lapanganku/routers"
 )
 
 var err error

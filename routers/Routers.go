@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SetupRouter mai ninit router
+// SetupRouter main init router
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 

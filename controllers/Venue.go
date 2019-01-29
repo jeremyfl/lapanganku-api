@@ -32,12 +32,16 @@ func ShowVenue(c *gin.Context) {
 
 	if foundVenue != nil {
 		c.JSON(404, gin.H{
-			"message": "Venue wasn't found",
+			"message": "Venue not found",
 		})
+
+		return
 	} else {
 		c.JSON(200, gin.H{
 			"data": venue,
 		})
+
+		return
 	}
 }
 
