@@ -10,6 +10,7 @@ import (
 type Venue struct {
 	gorm.Model
 	Name         string `json:"name"`
+	Address      string `json:"address"`
 	Price        int    `json:"price"`
 	Availability bool   `json:"avaibility"`
 }
