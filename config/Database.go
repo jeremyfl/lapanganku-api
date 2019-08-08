@@ -11,6 +11,10 @@ import (
 
 var err error
 
+const (
+	DRIVER = "mysql"
+)
+
 // Database connect
 func Database() *gorm.DB {
 	err := godotenv.Load()
@@ -19,7 +23,7 @@ func Database() *gorm.DB {
 		log.Fatal("Error loading .env file")
 	}
 
-	db, err := gorm.Open("mysql", ""+os.Getenv("DB_USER")+":"+os.Getenv("DB_PASS")+"@/"+os.Getenv("DB_NAME")+"?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open(DRIVER, ""+os.Getenv("DB_USER")+":"+os.Getenv("DB_PASS")+"@/"+os.Getenv("DB_NAME")+"?charset=utf8&parseTime=True&loc=Local")
 
 	if err != nil {
 		panic("Failed to connect to database")

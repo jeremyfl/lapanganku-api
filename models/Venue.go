@@ -1,8 +1,6 @@
 package models
 
 import (
-	"lapanganku/config"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -14,8 +12,6 @@ type Venue struct {
 	Price        int    `json:"price"`
 	Availability bool   `json:"avaibility"`
 }
-
-var db = config.Database()
 
 // GetAllVenue model
 func GetAllVenue(v *[]Venue) (err error) {

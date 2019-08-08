@@ -1,6 +1,6 @@
-# Lapanganku API
+# github.com/jeremylombogia/lapanganku API
 
-First version of lapanganku API
+First version of github.com/jeremylombogia/lapanganku API
 
 ## Getting Started
 
