@@ -1,6 +1,6 @@
 # Lapanganku API
 
-First version of Lapanganku API, backend services for competition purpose.
+First version of Lapanganku API, backend services for competition purpose (yes I need to win to extend my scholarship).
 
 ## Built With
 
