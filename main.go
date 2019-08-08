@@ -1,17 +1,25 @@
 package main
 
 import (
-	"github.com/jeremylombogia/lapanganku-api/config"
-	"github.com/jeremylombogia/lapanganku-api/models"
+	"github.com/jeremylombogia/lapanganku-api/field"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 var err error
 
 func main() {
-	config.Database().Close()
-	config.Database().AutoMigrate(&models.Venue{}, &models.Transaction{})
-	config.Database().Model(&models.Transaction{}).AddForeignKey("venue_id", "venues(id)", "cascade", "cascade")
+	// Echo instance
+	e := echo.New()
 
-	r := SetupRouter()
-	r.Run()
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	// Routes
+	e.GET("/field", field.IndexField)
+	e.POST("/field", field.PostField)
+
+	// Start server
+	e.Logger.Fatal(e.Start(":1323"))
 }
