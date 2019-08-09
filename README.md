@@ -5,7 +5,7 @@ First version of Lapanganku API, backend services for competition purpose (yes I
 ## Built With
 
 - [Gin](https://github.com/gin-gonic/gin) - Web Framework used
-- [GORM](https://gorm.io) - SQL ORM
+- [Mgo](https://github.com/go-mgo/mgo) - MongoDB Driver
 
 ## Getting Started
 
